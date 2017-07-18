@@ -1,0 +1,30 @@
+.scrollfix{
+   width:inherit;
+    overflow-x: scroll;
+    margin-left: 410px;
+}
+.firstcolrowspan{
+    height: 74px;
+    margin-top:-1px;
+}
+.secondcolrowspan{
+    height: 65px;
+}
+.col1{
+    position: absolute;
+    width:46px;
+    left:0px;
+    border-bottom-width: 1px;
+}
+.col2{
+    position: absolute;
+    width:190px;
+    left:46px;
+    border-bottom-width: 1px;
+}
+.col3{
+    position: absolute;
+    width:190px;
+    left:236px;
+    border-bottom-width: 1px;
+}

@@ -260,13 +260,13 @@
 		                                <h3>Campaigns lagging in Delivery Performance from JSON</h3>
 		                            </div>
 		                            <div class="ibox-content">
-		                                <div class="table-responsive">
+		                                <div class="table-responsive scrollfix">
 		                                    <table class="table table-hover table-bordered">
 		                                        <thead>
 		                                            <tr>
-		                                                <th rowspan="2"></th>
-		                                                <th>Campaign</th>
-		                                                <th>Partner</th>
+		                                                <th class="col1 firstcolrowspan"></th>
+		                                                <th class="col2 firstcolrowspan">Campaign Impressions</th>
+		                                                <th class="col3 firstcolrowspan">Partner</th>
 		                                                <th>Billable Impressions</th>
 		                                                <th>Clicks</th>
 		                                                <th>CTR</th>
@@ -282,8 +282,9 @@
 		                                                <th>In View / Completion Rate</th>
 		                                            </tr>
 		                                            <tr>
-		                                               <th><input type="text" placeholder="Search" name="tableHeader" class="form-control" style="width: 10rem" /></th>
-		                                               <th><input type="text" placeholder="Search" name="tableHeader" class="form-control" style="width: 10rem" /></th>
+		                                            	<th class="col1 secondcolrowspan" ></th>
+		                                               <th class="col2"><input type="text" placeholder="Search" name="tableHeader" class="form-control" style="width: 10rem" /></th>
+		                                               <th class="col3"><input type="text" placeholder="Search" name="tableHeader" class="form-control" style="width: 10rem" /></th>
 		                                               <th><input type="text" placeholder="Threshold" name="tableHeader" class="form-control" style="width: 10rem" /></th>
 		                                               <th><input type="text" placeholder="Threshold" name="tableHeader" class="form-control" style="width: 10rem" /></th>
 		                                               <th><input type="text" placeholder="Threshold" name="tableHeader" class="form-control" style="width: 10rem" /></th>
@@ -299,11 +300,12 @@
 		                                               <th><input type="text" placeholder="Threshold" name="tableHeader" class="form-control" style="width: 10rem" /></th>
 		                                            </tr>
 		                                        </thead>
-		                                        <tbody  *ngFor="let displaydata of tabledata.parentdata">
-		                                            <tr class="gradeX">
-		                                                <td><i class="fa fa-chevron-circle-right" aria-hidden="true"></i></td>
-		                                                <td>{{displaydata.campaign}}</td>
-		                                                <td>{{displaydata.Partner}}</td>
+		                                       
+		                                        <tbody *ngFor="let displaydata of tabledata.parentdata;let i = index " style="border:0px">
+		                                            <tr class="gradeX" >
+		                                                <td class="col1"><i class="fa fa-chevron-circle-right" (click)="openchild(displaydata,i)" ></i></td>
+		                                                <td class="col2">{{displaydata.campaign}}</td>
+		                                                <td class="col3">{{displaydata.Partner}}</td>
 		                                                <td class="text-right">{{displaydata.BillableImpressions}}</td>
 		                                                <td class="text-right">{{displaydata.Clicks}}</td>
 		                                                <td class="text-right">{{displaydata.CTR}}</td>
@@ -318,23 +320,29 @@
 		                                                <td class="text-right">{{displaydata.ImpressionsRemaining}}</td>
 		                                                <td class="text-right">{{displaydata.InView}}</td>
 		                                            </tr>
-		                                            <tr *ngFor="let child of displaydata.childData">
-		                                            	<td style="visibility: hidden;"><i class="fa fa-chevron-circle-right" aria-hidden="true"></i></td>
-		                                                	<td>{{child.c1}}</td>
-		                                                	<td>{{child.c2}}</td>
-		                                                	<td>{{child.c3}}</td>
-		                                                	<td>{{child.c4}}</td>
-		                                                	<td>{{child.c5}}</td>
-		                                                	<td>{{child.c6}}</td>
-		                                                	<td>{{child.c7}}</td>
-		                                                	<td>{{child.c8}}</td>
-		                                                	<td>{{child.c9}}</td>
-		                                                	<td>{{child.c10}}</td>
-		                                                	<td>{{child.c11}}</td>
-		                                                	<td>{{child.c12}}</td>
-		                                                	<td>{{child.c13}}</td>
-		                                                </tr>
-		                                        </tbody>
+		                                           
+			                                        <tr *ngFor="let child of displaydata.childData" >
+		                                            	<template [ngIf]="displaydata.showchild == 'true'">
+		                                            	<td class="col1">
+		                                            		<i style="visibility:hidden" class="fa fa-chevron-circle-right"></i></td>
+		                                                	<td class="col2">{{child.c1}}</td>
+		                                                	<td class="col3">{{child.c2}}</td>
+		                                                	<td class="text-right">{{child.c3}}</td>
+		                                                	<td class="text-right">{{child.c4}}</td>
+		                                                	<td class="text-right">{{child.c5}}</td>
+		                                                	<td class="text-right">{{child.c6}}</td>
+		                                                	<td class="text-right">{{child.c7}}</td>
+		                                                	<td class="text-right">{{child.c8}}</td>
+		                                                	<td class="text-right">{{child.c9}}</td>
+		                                                	<td class="text-right">{{child.c10}}</td>
+		                                                	<td class="text-right">{{child.c11}}</td>
+		                                                	<td class="text-right">{{child.c12}}</td>
+		                                                	<td class="text-right">{{child.c13}}</td>
+		                                                	<td class="text-right">{{child.c14}}</td>
+		                                                	<td class="text-right">{{child.c15}}</td>
+			                                            </template>
+			                                        </tr>
+	                                            </tbody>
 		                                    </table>
 		                                </div>
 		                            </div>
@@ -343,6 +351,7 @@
 		                </div>
 	                </div>
                 </div>
+
         	</div>
     	</div>
     </div>
